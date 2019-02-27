@@ -1,9 +1,13 @@
 # BPI-R1_Zigbee2mqtt-energymonitor-openwrt
 a home automation system montor for zigbee devices and Mqtt on domoticz for automation  and influxdb/chrongraf foe visual on BPI-R1 router
+software installed:
+18.06.1 openwrt
+domoticz
+zigbee2mqtt ( you will need to program a zigbee sniffer https://gadget-freakz.com/diy-zigbee-gateway/ )
 
-this image is for banana pi R1   specifically as  it is  the most suitable device out there currently that cost about $60 -70-  it will act as a fuly functional router, home automation, and IOT data base centre.
+this image is for banana pi R1   specifically as  it is  the most suitable device out there currently that cost about $60 -70-  it will act as a fuly functional router, home automation, and IOT database centre.
 
-currently I left out the influx software to save on size  so after you write image and expanded the in on a sd card.  you will need to boot into the device via SSH 
+currently I left out the influxdb software to save on size  so after you write image and expanded the in on a sd card.  you will need to boot into the device via SSH 
 
 and run these commands
 
