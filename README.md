@@ -7,7 +7,9 @@ zigbee2mqtt ( you will need to program a zigbee sniffer https://gadget-freakz.co
 
 this image is for banana pi R1   specifically as  it is  the most suitable device out there currently that cost about $60 -70-  it will act as a fuly functional router, home automation, and IOT database centre.
 
-currently I left out the influxdb software to save on size  so after you write image and expanded the in on a sd card.  you will need to boot into the device via SSH 
+currently I left out the influxdb software to save on size and so that it can be mounted at /mnt/DATA  so after you write image and expanded the in on a sd card.  you need to install a SSD drive inside the bpi-r1 via system-->mount points and mount disk /mnt/dATA. then you will need to boot into the device via SSH 
+
+ cd /mnt/DATA
 
 and run these commands
 
