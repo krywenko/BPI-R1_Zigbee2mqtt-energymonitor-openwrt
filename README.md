@@ -59,6 +59,7 @@ power, temperature, humidity, flow, and pressure is the typedb used by collectd 
 I use  espeasy   on my esp8266 devices  you just need a rule to publish
 
 example:
+
 on dht#Humidity do
  Publish incoming/House/mqtt-Humidity/humidity-Househumidity,N:[dht#Humidity] 
 endon
