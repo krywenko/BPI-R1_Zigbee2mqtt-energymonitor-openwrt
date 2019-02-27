@@ -1,2 +1,56 @@
 # BPI-R1_Zigbee2mqtt-energymonitor-openwrt
-a home automation system montor  zigbee devices on domoticz  and influxdb  on BPI-R1 router
+a home automation system montor for zigbee devices and Mqtt on domoticz for automation  and influxdb/chrongraf foe visual on BPI-R1 router
+
+this image is for banana pi R1   specifically as  it is  the most suitable device out there currently that cost about $60 -70-  it will act as a fuly functional router, home automation, and IOT data base centre.
+
+currently I left out the influx software to save on size  so after you write image and expanded the in on a sd card.  you will need to boot into the device via SSH 
+
+and run these commands
+
+wget https://dl.influxdata.com/influxdb/releases/influxdb-1.6.2_linux_armhf.tar.gz
+
+tar xvfz influxdb-1.6.2_linux_armhf.tar.gz
+mv influxdb-1.6.2_linux_armhf influxdb
+
+wget https://dl.influxdata.com/chronograf/releases/chronograf-1.7.5_linux_armhf.tar.gz
+
+tar xvfz chronograf-1.7.5_linux_armhf.tar.gz
+ mv chronograf-1.7.5_linux_armhf chronograf
+ 
+wget https://dl.influxdata.com/kapacitor/releases/kapacitor-1.5.2_linux_armhf.tar.gz
+
+tar xvfz kapacitor-1.5.2_linux_armhf.tar.gz
+mv kapacitor-1.5.2_linux_armhf kapacitor
+
+once these are installed  simply  go to Sysyem---> startup ---> local startup  and enable compontents zigbee2mqtt, influx, chrongraf and kapacitor
+
+Data Collection is handled by collectd so what ever Collectd can collect will be sent automatically to infuxdb
+
+ to send  mqtt data to your influxdb via collectd simply format you mqtt sends in this format 
+ 
+ break down of the topic:
+
+mosquitto_pub -t ‘incoming/OpenWrt/mqtt-Pressure/pressure-heatpump’ -m ‘N:21.5’`
+
+you can change the “hostname” OpenWrt to what ever you like, you can use it to develop sub groups - but if you do not use at least one that matches the hostname of the device it will not display in luci statistics ( if you only wish to save data to influxdb and do not wish it to be displayed locally in luci statistic then you can ignore the localhost) -
+
+mqtt-Energy, mqtt-Temp, mqtt-Flow and mqtt-Pressure are the the current fixed catagories for displaying in openwrt. you can use one of these or add your own catagory- the only prequisite is that it starts with mqtt-XXXXX - but these will not be displayed in luci statistics
+
+power, temperature, humidity, flow, and pressure is the typedb used by collectd you can use any of the assigned typedb listed in collectd ( but only the 5 listed above will be displayed in luci statistics)
+
+. grid, greenhouse and heatpump are descriptions you can use whatever you like here…
+
+I use  espeasy   on my esp8266 devices  you just need a rule to publish
+
+example:
+on dht#Humidity do
+ Publish incoming/House/mqtt-Humidity/humidity-Househumidity,N:[dht#Humidity] 
+endon
+
+on dht#Temperature do
+ Publish incoming/House/mqtt-Temp/temperature-HouseInside ,N:[dht#Temperature] 
+ endon
+ 
+ and you can send to domoticz  via controler..
+ 
+ 
