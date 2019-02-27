@@ -26,7 +26,19 @@ wget https://dl.influxdata.com/kapacitor/releases/kapacitor-1.5.2_linux_armhf.ta
 tar xvfz kapacitor-1.5.2_linux_armhf.tar.gz
 mv kapacitor-1.5.2_linux_armhf kapacitor
 
-once these are installed  simply  go to Sysyem---> startup ---> local startup  and enable compontents zigbee2mqtt, influx, chrongraf and kapacitor
+once these are installed  simply  go to Sysyem---> startup ---> local startup  and enable compontents zigbee2mqtt, influx, chrongraf and kapacitor by adding these lines to it
+
+echo "Begin" > localstartup.log
+#---------zigbee2mqtt
+/bin/Z2MQTT >nul 2>&1 & echo "Start Zigbee2mqtt" >> localstartup.log
+#---------influxdb
+sudo -H -u root /mnt/DATA/influxdb/usr/bin/./influxd -config /influxdb.conf   >nul 2>&1 & echo "started influx" >> localstartup.log
+#----------chrongraf
+sudo -H -u root /mnt/DATA/./chronograf/usr/bin/chronograf   >nul 2>&1 & echo "started chronograf" >> localstartup.log
+#---------kapacitor
+sudo -H -u root /mnt/DATA/./kapacitor/usr/bin/kapacitord -config /kapacitor.conf >nul 2>&1 & echo "Started Kapacitor" >> localstartup.log
+
+
 
 Data Collection is handled by collectd so what ever Collectd can collect will be sent automatically to infuxdb
 
