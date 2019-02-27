@@ -53,4 +53,4 @@ on dht#Temperature do
  
  and you can send to domoticz  via controler..
  
- 
+ if you wish to create an image for other  devices ie orange pi, raspberry,  .... etc  you can follow  my directions here. https://community.openenergymonitor.org/t/orange-pi-zero-iot-mqtt-monitor-with-onboard-influxdb-chronograf-and-kapacitor/9572/6
