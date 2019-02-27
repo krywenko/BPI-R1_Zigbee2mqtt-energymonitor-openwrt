@@ -61,11 +61,15 @@ I use  espeasy   on my esp8266 devices  you just need a rule to publish
 example:
 
 on dht#Humidity do
+
  Publish incoming/House/mqtt-Humidity/humidity-Househumidity,N:[dht#Humidity] 
+ 
 endon
 
 on dht#Temperature do
+
  Publish incoming/House/mqtt-Temp/temperature-HouseInside ,N:[dht#Temperature] 
+ 
  endon
  
  and you can send to domoticz  via controler..
