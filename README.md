@@ -16,16 +16,19 @@ and run these commands
 wget https://dl.influxdata.com/influxdb/releases/influxdb-1.6.2_linux_armhf.tar.gz
 
 tar xvfz influxdb-1.6.2_linux_armhf.tar.gz
+
 mv influxdb-1.6.2_linux_armhf influxdb
 
 wget https://dl.influxdata.com/chronograf/releases/chronograf-1.7.5_linux_armhf.tar.gz
 
-tar xvfz chronograf-1.7.5_linux_armhf.tar.gz
+tar xvfz chronograf-1.7.5_linux_armhf.tar.gz 
+
  mv chronograf-1.7.5_linux_armhf chronograf
  
 wget https://dl.influxdata.com/kapacitor/releases/kapacitor-1.5.2_linux_armhf.tar.gz
 
-tar xvfz kapacitor-1.5.2_linux_armhf.tar.gz
+tar xvfz kapacitor-1.5.2_linux_armhf.tar.gz 
+
 mv kapacitor-1.5.2_linux_armhf kapacitor
 
 once these are installed  simply  go to Sysyem---> startup ---> local startup  and enable compontents zigbee2mqtt, influx, chrongraf and kapacitor by adding these lines to it
